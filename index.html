@@ -71,23 +71,28 @@
 
             </div>
             <div class="footer-bar">
-                <span class="footer-status"><i class="plus">+ &nbsp;</i>Add item</span>
+                <span class="footer-status"><i class="plus">+ &nbsp;</i><span>Add item </span></span>
+                 <div class="inputItems">
+                 <input type="text"  id="inputItemTask" placeholder="Enter Task">
+                 <button id="addTask" class="add-btn">add</button>
+                </div>
+
             </div>
 
         </div>
 
 
         
-        <div class="add-board">+ &nbsp; ADD</div>
+        <div class="add-board" id = "addBoard">+ &nbsp; ADD</div>
 
 
         <!-- pop- up -->
          <div class="pop-up-menu">
-            <i class="fa-solid fa-x cancel-x"></i>
+            <i class="fa-solid fa-x cancel-x can-x"></i>
             <label for="title">Title</label>
-            <input type="text" class="input" placeholder="Your task">
+            <input type="text" class="input" id="boardTitle" placeholder="Your task">
             <label for="description">Description</label>
-            <input type="text" class="input" placeholder="Description">
+            <input type="text" class="input"  id = "boardDesc" placeholder="Description">
             <label for="color">Color</label>
             <span>
                 <input type="" class="color" >
@@ -99,8 +104,8 @@
 
             </span>
             <div class="btn-container">
-            <button class="add-btn cancel-btn">Cancel</button>
-            <button class="add-btn ">Add</button>
+            <button class="add-btn cancel-btn can-x">Cancel</button>
+            <button class="add-btn" id="addReqBoard">Add</button>
             </div>
 
 
@@ -108,6 +113,9 @@
 
 
     </main>
+
+
+    <script src="./app.js"></script>
 
     
 </body>

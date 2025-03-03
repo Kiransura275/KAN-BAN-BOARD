@@ -166,6 +166,7 @@
 }
 .task-purpose{
     margin-top: 7px;
+    text-transform: capitalize;
 
 }
 
@@ -195,13 +196,13 @@
     border-radius: 15px;
     font-size: 14px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 
 .pop-up-menu{
     height: 280px;
     width: 400px;
-
     position: absolute;
     z-index: 2;
     background-color: #FFFFFF;
@@ -300,6 +301,49 @@ label{
     cursor: pointer;
     transform: translateY(4px);
 }
+
+
+
+.inputItems{
+    display: flex;
+  
+    align-items: center;
+    gap: 7px;
+    display: none;
+  
+}
+
+
+#inputItemTask{
+    padding: 5px 10px ;
+    outline: none;
+    border-width: 0 0 2px 0;
+    border-color: rgba(0, 0, 0, 0.3) ;
+   
+    width: 50%;
+    font-size: 14px;
+    transition: all 0.5s ease-in-out;
+   
+
+
+}
+
+#inputItemTask:focus{
+    width: 70%;
+}
+
+#addTask{
+    padding: 5px 14px;
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+.flying-child{
+    opacity: 0.2;
+    transform: rotate(12deg);
+}
+
+
 
 
 
