@@ -1,0 +1,305 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root{
+    --white : #FFFFFF;
+
+}
+
+.navbar{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.heading{
+    text-align: center;
+    text-transform: capitalize;
+    padding: 10px;
+}
+
+.container{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    height: 84vh;
+    margin: 10px;
+    border-radius:10px ;
+    padding: 20px ;
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    position: relative;
+}
+
+.container::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+}
+.board-content::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+}
+
+.item{
+    height: 100%;
+    width: 300px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 13px 15px;
+    flex-shrink: 0;
+    z-index: 2;
+   
+}
+
+
+
+
+.item .top-bar:hover{
+    #deleteIcon{
+        display: block;
+                
+    }
+    transform: translateY(-3px);
+    background-color: #fff;
+    box-shadow: 0 30px 30px -15px rgba(0, 0, 0, 0.3);
+
+
+
+}
+
+
+
+.item .top-bar{
+    padding: 5px 15px;
+    transition: 0.2s all ease-in;
+    border-radius: 10px;
+}
+
+
+.item .top-bar .top-data{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 3px;
+}
+
+.icons{
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.task-count{
+    padding: 1px 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+
+.task-heading{
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+
+#deleteIcon{
+    margin-left: auto;
+    cursor: pointer;
+    display: none;
+    transition: all 1s ease-in-out;
+
+
+
+}
+
+.description{
+    font-size: 15px;
+    padding-left: 23px;
+    color: rgba(0, 0, 0, 0.7);
+    text-transform: capitalize;
+    line-height: 18px;
+    
+}
+
+.top-bar:hover{
+    position: relative;
+    transform: translateX(3px);
+}
+
+.board-content{
+    /* border: 2px solid red; */
+    height: 79%;
+    overflow-y: auto;
+}
+
+.footer-status{
+    background-color:rgba(0, 0, 0, 0.2);
+    padding: 7px 15px;
+    border-radius: 15px;
+    display: inline-block;
+    margin: 4px 10px 0 10px ;
+    transition: 0.4s all ease-in;
+   
+
+}
+
+.footer-status:hover{
+    cursor: pointer;
+    transform: scale(0.93);
+}
+
+.task{
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 9px 18px;
+    transition: all 0.3s ease-in-out;
+    margin-top: 7px;
+
+
+}
+.top-of-task{
+    /* padding: 0 10px; */
+    text-transform: capitalize;
+    display: flex;
+    gap: 5px;
+    font-size: 13px;
+    align-items: center;
+
+}
+.task-purpose{
+    margin-top: 7px;
+
+}
+
+#minus{
+    margin-left: auto;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+    display: none;
+
+}
+
+.task:hover{
+    background-color: aliceblue;
+    transform: translate(4px);
+    position: relative;
+    cursor: pointer;
+    #minus{
+        display: block;
+
+    }
+
+}
+.add-board{
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 7px 13px ;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.pop-up-menu{
+    height: 280px;
+    width: 400px;
+
+    position: absolute;
+    z-index: 2;
+    background-color: #FFFFFF;
+    top: 138px;
+    left: 485px;
+   
+  
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 40px 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: none;
+
+
+}
+
+
+.input{
+    padding: 4px 15px;
+    font-size: 16px;
+    outline: none;
+    border: 2px solid rgba(0, 0, 0, 0.24);
+    border-radius: 6px;
+}
+
+label{
+    text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.7);
+ 
+}
+
+
+.add-btn{
+    background-color: rgb(54, 185, 54);
+    color: white;
+    align-self: center;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top:8px ;
+    transition: all 0.5s ease-in-out;
+  
+
+
+}
+
+.btn-container{
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+
+.cancel-btn{
+    background-color: transparent;
+    color: rgb(54, 185, 54) ;
+    border:  2px solid rgb(54, 185, 54) ;
+    padding: 5px 18px;
+   
+}
+
+.cancel-btn:hover{
+    background-color: rgb(129, 214, 129) ;
+    color: white;
+    border:  1px solid rgb(54, 185, 54);
+
+}
+
+.cancel-x{
+    font-size: 13px;
+    font-weight: 400;
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.cancel-x:hover{
+    transform: scale(1.1);
+    color: rgb(54, 185, 54);
+    font-weight: 600;
+
+}
+
+.color{
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+}
+
+.add-btn:hover{
+    cursor: pointer;
+    transform: translateY(4px);
+}
+
+
+

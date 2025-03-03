@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kan-Ban-Board</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/68fdefb274.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        
+        <h1 class="heading">Kanban Board</h1>
+
+    </nav>
+
+    <!-- container -->
+    <main class="container">
+
+        <div class="item">
+            <div class="top-bar">
+                <div class="top-data">
+                <i class="fa-solid fa-arrow-up-right-from-square icons"></i>
+                <h6 class="task-heading">tasks</h6>
+                <i class="task-count">3</i>
+                <i class="fa-solid fa-trash icons" id="deleteIcon"></i>
+            </div>
+            <p class="description">this Ex, eligendi?</p>               
+
+
+            </div>
+            <!-- board content -->
+
+            <div class="board-content">
+                
+                <!-- tasks -->
+                <div class="task" draggable="true">
+                    <div class="top-of-task">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <span>draft</span>
+                        <i class="fa-solid fa-minus" id="minus"></i>
+                    </div>
+                    <p class="task-purpose">Learn js</p>
+                </div>
+
+
+                <!-- tasks -->
+                <div class="task" draggable="true">
+                    <div class="top-of-task">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <span>draft</span>
+                        <i class="fa-solid fa-minus" id="minus"></i>
+                    </div>
+                    <p class="task-purpose">Learn js</p>
+                </div>
+
+
+                <!-- tasks -->
+                <div class="task" draggable="true">
+                    <div class="top-of-task">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <span>draft</span>
+                        <i class="fa-solid fa-minus" id="minus"></i>
+                    </div>
+                    <p class="task-purpose">Learn js</p>
+                </div>
+
+               
+
+
+            </div>
+            <div class="footer-bar">
+                <span class="footer-status"><i class="plus">+ &nbsp;</i>Add item</span>
+            </div>
+
+        </div>
+
+
+        
+        <div class="add-board">+ &nbsp; ADD</div>
+
+
+        <!-- pop- up -->
+         <div class="pop-up-menu">
+            <i class="fa-solid fa-x cancel-x"></i>
+            <label for="title">Title</label>
+            <input type="text" class="input" placeholder="Your task">
+            <label for="description">Description</label>
+            <input type="text" class="input" placeholder="Description">
+            <label for="color">Color</label>
+            <span>
+                <input type="" class="color" >
+                <input type="" class="color" >
+                <input type="" class="color" >
+                <input type="" class="color" >             
+
+
+
+            </span>
+            <div class="btn-container">
+            <button class="add-btn cancel-btn">Cancel</button>
+            <button class="add-btn ">Add</button>
+            </div>
+
+
+         </div>
+
+
+    </main>
+
+    
+</body>
+</html>
