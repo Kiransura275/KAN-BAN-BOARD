@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kan-Ban-Board</title>
     <link rel="stylesheet" href="style.css">
+
     <script src="https://kit.fontawesome.com/68fdefb274.js" crossorigin="anonymous"></script>
+   
 </head>
 <body>
     <!-- navbar -->
@@ -18,7 +20,7 @@
     <!-- container -->
     <main class="container">
 
-        <div class="item">
+        <div class="item" style="display:none">
             <div class="top-bar">
                 <div class="top-data">
                 <i class="fa-solid fa-arrow-up-right-from-square icons"></i>
@@ -94,18 +96,26 @@
             <label for="description">Description</label>
             <input type="text" class="input"  id = "boardDesc" placeholder="Description">
             <label for="color">Color</label>
-            <span>
-                <input type="" class="color" >
-                <input type="" class="color" >
-                <input type="" class="color" >
-                <input type="" class="color" >             
+            <span class="color-pallets" id="colorSelect">
+                
+                <input type="radio" id="black" value="#000"  name="color" checked>
+                <label for="black"></label>
+                
+                <input type="radio" id="blue" value="#0066CC"  name="color">
+                <label for="blue"></label>
+
+                <input type="radio" id="green" value="#339933"  name="color">
+                <label for="green"></label>
+
+                <input type="radio" id="yellow" value="#FF8000"  name="color">
+                <label for="yellow"></label>        
 
 
 
             </span>
             <div class="btn-container">
-            <button class="add-btn cancel-btn can-x">Cancel</button>
-            <button class="add-btn" id="addReqBoard">Add</button>
+                <button class="add-btn cancel-btn can-x">Cancel</button>
+                <button class="add-btn" id="addReqBoard">Add</button>
             </div>
 
 

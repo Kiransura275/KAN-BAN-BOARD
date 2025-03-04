@@ -21,7 +21,7 @@ const createEle = (ele , ...cls) => {
 
 // creating and appending tasks
 
-const createAndAppendTask = ( bTitle ,board , text, count )=>{
+const createAndAppendTask = ( bTitle ,board , text, count ,color)=>{
 
 
     const task = createEle("div","task");
@@ -30,8 +30,9 @@ const createAndAppendTask = ( bTitle ,board , text, count )=>{
     const topPortion = createEle("div" , "top-of-task");
 
     const icon1 = createEle("i","fa-solid", "fa-circle-notch");
+    icon1.style.color = color;
     const span = createEle("span");
-    span.textContent="Draft";
+    span.textContent= bTitle;
     const icon2 = createEle("i","fa-solid", "fa-minus");
     icon2.setAttribute("id", "minus");
 
@@ -48,7 +49,7 @@ const createAndAppendTask = ( bTitle ,board , text, count )=>{
         localStorage.setItem("local",JSON.stringify(localStorageArray));
 
 
-    })
+    });
 
 
     const taskReason = createEle("p","task-purpose");
@@ -56,18 +57,44 @@ const createAndAppendTask = ( bTitle ,board , text, count )=>{
 
     task.append(topPortion , taskReason);
 
+   
     board.appendChild(task);
+  
+
+    
 
 
     // dragging event
-    task.addEventListener("dragstart",()=>{
+    task.addEventListener("dragstart",(e)=>{
+        const parent = e.target.parentNode.parentNode;
+        
+        parent.children[0].children[0].children[2].textContent = parseInt(parent.children[0].children[0].children[2].textContent)-1;
+
+
+        let indexOfObj =localStorageArray.findIndex((obj)=> obj.title.toLowerCase() === parent.children[0].children[0].children[1].textContent.toLowerCase());
+        let textIndex = localStorageArray[indexOfObj].tasks.indexOf(text);
+        localStorageArray[indexOfObj].tasks.splice(textIndex,1);
+        localStorage.setItem("local",JSON.stringify(localStorageArray));
+        
         task.classList.add("flying-child");
     });
 
     // drag end
 
-    task.addEventListener("dragend",()=>{
+    task.addEventListener("dragend",(e)=>{
+
+        const parent = e.target.parentNode.parentNode;        
+        parent.children[0].children[0].children[2].textContent = parseInt(parent.children[0].children[0].children[2].textContent)+1;
+        let indexOfObj =localStorageArray.findIndex((obj)=> obj.title.toLowerCase() === parent.children[0].children[0].children[1].textContent.toLowerCase());
+        const childArray = [...parent.children[1].children];
+       
+        //updating local storage
+        
+        localStorageArray[indexOfObj].tasks = childArray.map(child => child.children[1].textContent.toLowerCase());
+        localStorage.setItem("local",JSON.stringify(localStorageArray));
+
         task.classList.remove("flying-child");
+       
     });
     
 
@@ -96,7 +123,7 @@ const createAndAppendTask = ( bTitle ,board , text, count )=>{
 
 //Create aNew Board 
 
-const createNewBoard = ( title , desc)=>{
+const createNewBoard = ( title , desc , color)=>{
     
 
     const board = createEle("div","item");
@@ -107,6 +134,7 @@ const createNewBoard = ( title , desc)=>{
     const topData = createEle("div","top-data");
 
     const arrowRight = createEle("i", "fa-solid" ,"fa-arrow-up-right-from-square" ,"icons");
+    arrowRight.style.color = color;
     const taskHeading = createEle("h6","task-heading");
 
     taskHeading.textContent = title ;
@@ -173,13 +201,15 @@ const createNewBoard = ( title , desc)=>{
             alert("Enter a valid Task ");
             return;
         }
-        createAndAppendTask( title,boardContent , inputTask.value.trim() , taskCount);
+        createAndAppendTask( title,boardContent , inputTask.value.trim() , taskCount , color);
         inputTask.value="";
         footerStatus.style.display = "inline-block";
         inputItems.style.display = "none";
 
 
     })
+
+
 
 
 
@@ -203,7 +233,11 @@ const createNewBoard = ( title , desc)=>{
     board.append(topBar , boardContent , footerBar);
 
     //appending to container
+   
     container.insertBefore( board , addBoard);
+       
+  
+   
 
 
 
@@ -214,13 +248,21 @@ const createNewBoard = ( title , desc)=>{
 
         const child = document.querySelector(".flying-child");
         const allOtherSiblings = [...boardContent.children];
+        child.children[0].children[1].textContent = title;
+        child.children[0].children[0].style.color = color ;
+        
+
 
 
         const nextSibling = allOtherSiblings.find(sibling=> (e.clientY-40) <= sibling.offsetTop+ sibling.offsetHeight / 2   );
-      
-        
         
         boardContent.insertBefore(child , nextSibling);
+
+        // boardContent.parentNode.children[0].children[0].children[2].textContent= parseInt(boardContent.parentNode.children[0].children[0].children[2].textContent)+1;
+
+
+
+        
        
     })
     
@@ -229,6 +271,7 @@ const createNewBoard = ( title , desc)=>{
         localStorageArray.push(
             {
                 "title":title,
+                "color":color,
                 "desc":desc,
                 "tasks":[]
 
@@ -240,7 +283,7 @@ const createNewBoard = ( title , desc)=>{
 
     }
 
-    return boardContent ;
+    return [boardContent, taskCount] ;
 
 
 
@@ -296,7 +339,14 @@ const addReqBoard = document.getElementById("addReqBoard");
             alert("Fill All Details");
             return;
         }
-        createNewBoard(boardTitle.value.trim(), boardDesc.value.trim());
+        const colorPalets = document.querySelector("#colorSelect");
+        const colorPalletChild = [...colorPalets.children];
+        const checkedColor = colorPalletChild.find(item=>item.checked);
+    
+
+
+
+        createNewBoard(boardTitle.value.trim(), boardDesc.value.trim() ,checkedColor.value);
             
      
         
@@ -325,11 +375,9 @@ window.addEventListener("load" ,()=>{
     
     const localStorageArrayCheck = JSON.parse(localStorage.getItem("local"))||[];
     localStorageArrayCheck.forEach(item=>{
-        let boardContent =createNewBoard(item.title,item.desc);
-        item.tasks.forEach((task,index) =>{
-            createAndAppendTask(item.title , boardContent , task , index+1);
-
-
+        let boardContent =createNewBoard(item.title,item.desc,item.color);
+        item.tasks.forEach(task =>{
+            createAndAppendTask(item.title , boardContent[0] , task , boardContent[1],item.color);
         })
 
     })
