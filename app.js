@@ -11,14 +11,11 @@ const cancelX = document.querySelectorAll(".can-x");
 const checkForEmpty = ()=>{
     if([...container.children].length >4){
         container.classList.add("no-items");
-        console.log("hi")
     }
     else{
         container.classList.remove("no-items");
-        console.log("hi")
 
     }
-    console.log(container.children)
 }
 
 
@@ -66,8 +63,12 @@ const createAndAppendTask = ( bTitle ,board , text, count ,color)=>{
 
         
 
-        let index = localStorageArray.findIndex(item=>item.title === bTitle);
+        let index = localStorageArray.findIndex(item=>item.title === parentBoard.children[0].children[0].children[1].textContent);
         let taskIndex = localStorageArray[index].tasks.indexOf(text);
+        if(taskIndex=== -1){
+            alert("not found ");
+            return;
+        }
         localStorageArray[index].tasks.splice(taskIndex,1);
 
         task.remove();
