@@ -55,14 +55,26 @@ const createAndAppendTask = ( bTitle ,board , text, count ,color)=>{
 
     topPortion.append(icon1,span,icon2);
 
-    icon2.addEventListener("click",()=>{
+
+    icon2.addEventListener("click",(e)=>{
+
+        //updating counter
+        const parentBoard = e.target.parentElement.parentElement.parentElement.parentElement
+        const counter = parentBoard.children[0].children[0].children[2];
+        counter.textContent = Number(counter.textContent) - 1 ;
+        console.log(parentBoard)
+
+        
 
         let index = localStorageArray.findIndex(item=>item.title === bTitle);
         let taskIndex = localStorageArray[index].tasks.indexOf(text);
         localStorageArray[index].tasks.splice(taskIndex,1);
 
         task.remove();
-        count.textContent = parseInt(count.textContent)-1;
+
+        // count.textContent = parseInt(count.textContent)-1; @BUG
+       
+
         localStorage.setItem("local",JSON.stringify(localStorageArray));
 
 
