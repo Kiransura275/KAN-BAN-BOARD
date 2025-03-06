@@ -12,21 +12,34 @@
 }
 
 
+body {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Soft blue gradient */
+}
+
+
+
 
 .navbar{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background :linear-gradient(135deg, #6a11cb, #2575fc); 
+    box-shadow: 0 30px 30px -15px rgba(0, 0, 0, 0.3);
+
+    
+
 }
 
 .heading{
     text-align: center;
     text-transform: capitalize;
     padding: 10px;
-    /* color: rgb(54, 185, 54); */
+    color: white;
 }
 
 
 .container{
     border: 1px solid rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     height: 84vh;
     margin: 10px;
     border-radius:10px ;
@@ -45,6 +58,25 @@
     display: none; /* Hides the scrollbar */
 }
 
+.no-data{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color:#0066CC;
+    text-shadow: 5px 5px 5px #C0C0C0;
+    font-size: 18px;
+    margin: 0 20% ;
+}
+.no-image{
+    object-fit: cover;
+    width: 450px;
+}
+
+.no-items .no-data{
+    display: none;
+}
+
 .item{
     height: 100%;
     width: 300px;
@@ -52,9 +84,16 @@
     padding: 13px 15px;
     flex-shrink: 0;
     z-index: 2;
+    transition: all 0.3s ease ;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9); /* White to light gray gradient */
+
    
 }
 
+.item:hover {
+    transform: translateY(-5px); /* Lift the card on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
 
 
 
@@ -77,6 +116,10 @@
     padding: 5px 15px;
     transition: 0.2s all ease-in;
     border-radius: 10px;
+    box-shadow: 0  0 10px 5px  #f5f7fa; 
+    ;
+   
+  
 }
 
 
@@ -84,11 +127,13 @@
     display: flex;
     align-items: center;
     gap: 8px;
+ 
     padding: 4px 3px;
 }
 
 .icons{
     color: rgba(0, 0, 0, 0.7);
+
 }
 
 .task-count{
@@ -96,6 +141,7 @@
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     font-size: 13px;
+    font-weight: 500;
 }
 
 
@@ -157,6 +203,7 @@
     padding: 9px 18px;
     transition: all 0.3s ease-in-out;
     margin-top: 7px;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9); /* White to light gray gradient */
 
 
 }
@@ -195,14 +242,24 @@
 
 }
 .add-board{
-    background-color: rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Purple to blue gradient */
+    color: white;
     padding: 7px 13px ;
     height: 30px;
-    border-radius: 15px;
+    border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
     flex-shrink: 0;
+    margin:auto 0 ;
+    transition: all 0.5s ease;
 }
+
+
+.add-board:hover{
+   
+    transform: translateY(3px);
+}
+
 
 
 .pop-up-menu{
@@ -245,7 +302,7 @@ label{
 
 
 .add-btn{
-    background-color: rgb(54, 185, 54);
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Purple to blue gradient */
     color: white;
     align-self: center;
     padding: 8px 25px;
@@ -318,6 +375,7 @@ label{
 .btn-container{
     display: flex;
     justify-content: end;
+    
  
     gap: 10px;
 }
@@ -325,8 +383,10 @@ label{
 
 .cancel-btn{
     background-color: transparent;
-    color: rgb(54, 185, 54) ;
-    border:  2px solid rgb(54, 185, 54) ;
+    color: linear-gradient(135deg, #6a11cb, #2575fc); 
+    border:  2px solid linear-gradient(135deg, #6a11cb, #2575fc); 
+
+    color: white;
     padding: 5px 18px;
    
 }

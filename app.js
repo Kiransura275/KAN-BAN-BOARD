@@ -6,6 +6,23 @@ const popUpMenu = document.querySelector(".pop-up-menu");
 const cancelX = document.querySelectorAll(".can-x");
  
 
+//check container Empty
+
+const checkForEmpty = ()=>{
+    if([...container.children].length >4){
+        container.classList.add("no-items");
+        console.log("hi")
+    }
+    else{
+        container.classList.remove("no-items");
+        console.log("hi")
+
+    }
+    console.log(container.children)
+}
+
+
+
 
 //Element creator
 const createEle = (ele , ...cls) => {
@@ -149,6 +166,10 @@ const createNewBoard = ( title , desc , color)=>{
         let index = localStorageArray.findIndex((item)=>item.title === board.title );
         localStorageArray.splice(index,1);
         board.remove();
+
+        //check for Empty 
+        checkForEmpty();
+
         localStorage.setItem("local",JSON.stringify(localStorageArray));
     })
 
@@ -227,6 +248,7 @@ const createNewBoard = ( title , desc , color)=>{
 
     footerStatus.appendChild(plusSign);
     footerStatus.appendChild(spanText);
+    footerStatus.classList.add("add-btn")
     footerBar.append(footerStatus , inputItems );
 
 
@@ -235,6 +257,9 @@ const createNewBoard = ( title , desc , color)=>{
     //appending to container
    
     container.insertBefore( board , addBoard);
+    
+     //check for Empty 
+     checkForEmpty();
        
   
    
@@ -260,7 +285,7 @@ const createNewBoard = ( title , desc , color)=>{
 
         // boardContent.parentNode.children[0].children[0].children[2].textContent= parseInt(boardContent.parentNode.children[0].children[0].children[2].textContent)+1;
 
-
+        
 
         
        
@@ -384,6 +409,9 @@ window.addEventListener("load" ,()=>{
 
 
 } );
+
+//check for empty
+checkForEmpty();
 
 
 
