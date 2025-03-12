@@ -401,14 +401,18 @@ const addReqBoard = document.getElementById("addReqBoard");
 
 
 
-
+//check for empty
+checkForEmpty();
 
 
 
 
 // localStorage
 
-window.addEventListener("load" ,()=>{
+document.addEventListener("DOMContentLoaded" ,()=>{
+
+
+    container.style.display="none";
   
     
     const localStorageArrayCheck = JSON.parse(localStorage.getItem("local"))||[];
@@ -419,12 +423,14 @@ window.addEventListener("load" ,()=>{
         })
 
     })
+    checkForEmpty();
+    container.style.display="flex";
 
 
 } );
 
-//check for empty
-checkForEmpty();
+
+
 
 
 

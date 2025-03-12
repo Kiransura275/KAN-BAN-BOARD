@@ -67,6 +67,7 @@ body {
     text-shadow: 5px 5px 5px #C0C0C0;
     font-size: 18px;
     margin: 0 20% ;
+    transition: all 0.5s ease-in-out;
 }
 .no-image{
     object-fit: cover;
